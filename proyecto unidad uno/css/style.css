@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+
+
+
+
+body {
+    background-color: #e8dfc8;
+    margin: 0;
+    color: #2d2418;
+    font-family: Arial, sans-serif;
+}
+
+
+
+header {
+    background-color: #31572c;
+    padding: 40px;
+    border-bottom: 6px solid #d4a72c;
+}
+
+h1 {
+    font-family: "Dancing Script", cursive;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+
+    font-size: 5em;
+    text-align: center;
+
+    margin: 0;
+
+    color: white;
+}
+
+
+nav {
+    background-color: #4f772d;
+    text-align: center;
+    padding: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+
+    font-size: 22px;
+    font-weight: bold;
+
+    margin: 0 25px;
+}
+
+nav a:hover {
+    color: #f0c75e;
+}
+main {
+    width: 85%;
+    margin: auto;
+}
+h2 {
+    font-family: "Dancing Script", cursive;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+
+    color: #6b4f1d;
+
+    font-size: 3em;
+    text-align: center;
+}
+.contenido {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 60px;
+
+    margin-top: 70px;
+    margin-bottom: 100px;
+}
+
+.texto {
+    width: 60%;
+}
+
+.texto p {
+    color: #2d2418;
+
+    font-size: 1.5em;
+
+    line-height: 1.7;
+
+    text-align: justify;
+}
+
+.contenido img {
+    width: 400px;
+    height: auto;
+
+    border-radius: 15px;
+}
+
+.justificacion {
+    margin-top: 50px;
+    margin-bottom: 80px;
+
+    text-align: center;
+}
+
+.justificacion p {
+    width: 80%;
+
+    margin: auto;
+
+    font-size: 1.4em;
+
+    line-height: 1.7;
+
+    text-align: justify;
+}
+
+.enlaces {
+    text-align: center;
+
+    margin-top: 50px;
+    margin-bottom: 60px;
+}
+
+.enlaces p {
+    font-size: 1.3em;
+}
+
+.enlaces a {
+    display: block;
+
+    color: #31572c;
+
+    font-size: 1.4em;
+
+    margin: 25px;
+
+    font-weight: bold;
+}
+
+.enlaces a:hover {
+    color: #b8860b;
+}
+
+.imagen-abajo {
+    text-align: center;
+
+    margin-top: 40px;
+    margin-bottom: 70px;
+}
+
+.imagen-abajo img {
+    width: 500px;
+    height: auto;
+
+    border-radius: 15px;
+}
+
+footer {
+    background-color: #31572c;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 25px;
+}
+
+footer p {
+    font-size: 18px;
+}
