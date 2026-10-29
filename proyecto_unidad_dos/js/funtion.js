@@ -1,128 +1,51 @@
-const formulario = document.getElementById("formContacto");
-if (formulario) {
-    const nombre = document.getElementById("nombre");
-    const correo = document.getElementById("correo");
-    const asunto = document.getElementById("asunto");
-    const mensaje = document.getElementById("mensaje");
-    const acepto = document.getElementById("acepto");
-    const errorNombre = document.getElementById("errorNombre");
-    const errorCorreo = document.getElementById("errorCorreo");
-    const errorAsunto = document.getElementById("errorAsunto");
-    const errorMensaje = document.getElementById("errorMensaje");
-    const errorAcepto = document.getElementById("errorAcepto");
+document.addEventListener("DOMContentLoaded", function () {
+    const formulario = document.getElementById("formularioContacto");
     const respuesta = document.getElementById("respuestaFormulario");
-    formulario.addEventListener("submit", function(evento) {
-        evento.preventDefault();
-        let valido = true;
-        document.querySelectorAll(".error").forEach(error => {
-            error.textContent = "";
-        });
-        formulario.querySelectorAll(".invalido, .valido").forEach(campo => {
-            campo.classList.remove("invalido", "valido");
-        });
-        respuesta.textContent = "";
-        respuesta.className = "";
-        const nombreValor = nombre.value.trim();
-        if (nombreValor.length < 2) {
-            errorNombre.textContent =
-                "Escribe tu nombre con al menos 2 caracteres.";
+    if (formulario && respuesta) {
+        formulario.addEventListener("submit", function (evento) {
+            evento.preventDefault();
+            if (!formulario.checkValidity()) {
+                formulario.reportValidity();
+                return;
+            }
+            const nombre = document.getElementById("nombre").value.trim();
+            const correo = document.getElementById("correo").value.trim();
+            const mensaje = document.getElementById("mensaje").value.trim();
 
-            nombre.classList.add("invalido");
-            valido = false;
-        } else {
-            nombre.classList.add("valido");
-        }
-        const correoValor = correo.value.trim();
-
-        const expresionCorreo =
-            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        if (!expresionCorreo.test(correoValor)) {
-            errorCorreo.textContent =
-                "Escribe un correo electrónico válido.";
-
-            correo.classList.add("invalido");
-            valido = false;
-        } else {
-            correo.classList.add("valido");
-        }
-        if (asunto.value === "") {
-            errorAsunto.textContent =
-                "Selecciona un asunto.";
-
-            asunto.classList.add("invalido");
-            valido = false;
-        } else {
-            asunto.classList.add("valido");
-        }
-        const mensajeValor = mensaje.value.trim();
-
-        if (mensajeValor.length < 10) {
-            errorMensaje.textContent =
-                "El mensaje debe tener al menos 10 caracteres.";
-
-            mensaje.classList.add("invalido");
-            valido = false;
-        } else {
-            mensaje.classList.add("valido");
-        }
-        if (!acepto.checked) {
-            errorAcepto.textContent =
-                "Debes confirmar que tus datos son correctos.";
-
-            valido = false;
-        }
-        if (valido) {
-
+            if (nombre.length < 2) {
+                respuesta.textContent = "Escribe un nombre válido.";
+                return;
+            }
+            if (!correo.includes("@")) {
+                respuesta.textContent = "Escribe un correo electrónico válido.";
+                return;
+            }
+            if (mensaje.length < 10) {
+                respuesta.textContent =
+                    "El mensaje debe tener al menos 10 caracteres.";
+                return;
+            }
             respuesta.textContent =
-                "¡Gracias, " + nombreValor +
-                "! Tu formulario se ha validado correctamente.";
+                "Gracias, " + nombre +
+                ". El formulario se validó correctamente, pero no envía correos reales.";
 
-            respuesta.classList.add("exito");
             formulario.reset();
-
-            formulario.querySelectorAll(".valido").forEach(campo => {
-                campo.classList.remove("valido");
-            });
-
-        } else {
-
-            respuesta.textContent =
-                "Revisa los campos marcados y corrige los errores.";
-
-            respuesta.classList.add("fallo");
-            const primerError = formulario.querySelector(".invalido");
-
-            if (primerError) {
-                primerError.focus();
-            } else if (!acepto.checked) {
-                acepto.focus();
-            }
-        }
-
-    });
-    [nombre, correo, asunto, mensaje].forEach(campo => {
-
-        campo.addEventListener("input", function() {
-
-            campo.classList.remove("invalido", "valido");
-
-            const error = document.getElementById(
-                "error" +
-                campo.id.charAt(0).toUpperCase() +
-                campo.id.slice(1)
-            );
-
-            if (error) {
-                error.textContent = "";
-            }
-
         });
+    }
+    const enlaces = document.querySelectorAll(".menu a");
+    let paginaActual = window.location.pathname.split("/").pop();
 
+    if (paginaActual === "") {
+        paginaActual = "index.html";
+    }
+    enlaces.forEach(function (enlace) {
+        const destino = enlace.getAttribute("href");
+
+        if (destino === paginaActual) {
+            enlace.classList.add("activo");
+        } else {
+            enlace.classList.remove("activo");
+        }
     });
 
-    acepto.addEventListener("change", function() {
-        errorAcepto.textContent = "";
-    });
-
-}
+});
